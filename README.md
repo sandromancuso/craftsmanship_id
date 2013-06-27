@@ -1,4 +1,6 @@
-## Generatera Idea / Eclipse files
+### Skeleton Scala Project
+
+#### Generatera Idea / Eclipse files
 
 sbt    
 test    
