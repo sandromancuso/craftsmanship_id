@@ -84,9 +84,9 @@ class JettyLauncher @Inject()(
 	}
 
 	private def addFilters(context: WebAppContext) {
-		val gzipFilterHolder = new FilterHolder(classOf[GzipFilter])
-		gzipFilterHolder.setInitParameter("mimeTypes", "text/html,text/plain,text/xml,application/xhtml+xml,text/css,application/javascript,image/svg+xml")
-		context addFilter(gzipFilterHolder, "/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR))
+//		val gzipFilterHolder = new FilterHolder(classOf[GzipFilter])
+//		gzipFilterHolder.setInitParameter("mimeTypes", "text/html,text/plain,text/xml,application/xhtml+xml,text/css,application/javascript,image/svg+xml")
+//		context addFilter(gzipFilterHolder, "/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR))
 	}
 
 	private def addControllers(context: WebAppContext) {

@@ -1,4 +1,6 @@
 import javax.servlet.ServletContext
+import org.craftedsw.craftsmanshipid.configuration.ApplicationConfig
+import org.craftedsw.craftsmanshipid.controllers.MainController
 import org.scalatra.LifeCycle
 
 /**
@@ -8,6 +10,6 @@ import org.scalatra.LifeCycle
  */
 class Scalatra extends LifeCycle {
 	override def init(context: ServletContext) {
-		// Mount one or more servlets
+		context.mount(new MainController(new ApplicationConfig), "/*")
 	}
 }
