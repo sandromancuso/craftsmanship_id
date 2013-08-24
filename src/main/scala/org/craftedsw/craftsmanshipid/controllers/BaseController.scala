@@ -5,9 +5,9 @@ import org.scalatra.scalate.ScalateSupport
 import org.scalatra.json.JacksonJsonSupport
 import org.scalatra.ActionResult
 import scala.Some
-import java.util.Date
 import org.craftedsw.craftsmanshipid.configuration.ApplicationConfig
 import ApplicationConfig._
+import org.craftedsw.craftsmanshipid.infrastructure.authorization.{NullUserPrincipal, UserPrincipal}
 
 abstract class BaseController(applicationConfig: ApplicationConfig)
 	extends ScalatraServlet
@@ -25,7 +25,6 @@ abstract class BaseController(applicationConfig: ApplicationConfig)
 		contentType = "text/html"
 		val allAttributes: Seq[(String, Any)] = attributes :+
 			("environment" -> (applicationConfig property ENVIRONMENT_NAME)) :+
-			("applicationVersion" -> (applicationConfig property APPLICATION_VERSION)) :+
 			("userPrincipal" -> (userPrincipal())) :+
 			("isPhaseOneVisible" -> (applicationConfig propertyAsBoolean(FEATURE_PHASE_1_VISIBLE)))
 		jade(path, allAttributes: _*)

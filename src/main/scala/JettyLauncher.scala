@@ -4,8 +4,8 @@ import javax.servlet.DispatcherType._
 import net.codingwell.scalaguice.InjectorExtensions.ScalaInjector
 import org.craftedsw.craftsmanshipid.configuration.ApplicationConfig
 import ApplicationConfig._
-import org.craftedsw.craftsmanshipid.configuration.guice.{AuthenticationModule, MainModule}
-import org.craftedsw.craftsmanshipid.controllers.BaseController
+import org.craftedsw.craftsmanshipid.configuration.guice.{WebModule, AuthenticationModule, MainModule}
+import org.craftedsw.craftsmanshipid.controllers.{MainController, BaseController}
 import org.craftedsw.craftsmanshipid.infrastructure.authorization.filter.AuthorizationFilter
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.{ServletHolder, DefaultServlet, FilterHolder}
@@ -14,7 +14,10 @@ import org.eclipse.jetty.webapp.WebAppContext
 
 object JettyLauncher extends App {
 
-	val injector = new ScalaInjector(Guice.createInjector(new MainModule(), new AuthenticationModule))
+	val injector = new ScalaInjector(Guice.createInjector(
+										new WebModule(),
+										new MainModule(),
+										new AuthenticationModule))
 
 	val launcher = injector.instance[JettyLauncher]
 	launcher.start
@@ -24,7 +27,8 @@ object JettyLauncher extends App {
 
 class JettyLauncher @Inject()(
 	                             applicationConfig: ApplicationConfig,
-	                             authorizationFilter: AuthorizationFilter) {
+	                             authorizationFilter: AuthorizationFilter,
+	                             mainController: MainController) {
 
 	def port = applicationConfig propertyAsInt SERVER_PORT
 
@@ -80,6 +84,7 @@ class JettyLauncher @Inject()(
 	}
 
 	private def addControllers(context: WebAppContext) {
+		addController(context, mainController, "/*")
 //		addController(context, mainController,              "/*")
 //		addController(context, controlController,           "/control/*")
 //		addController(context, controlDetailsController,    "/view/control/*")
