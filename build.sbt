@@ -31,7 +31,7 @@ libraryDependencies ++= Seq(
 "org.xmlmatchers" % "xml-matchers" % "0.10" % "test",
 "org.seleniumhq.selenium" % "selenium-java" % "2.24.1" % "test",
 "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.24.1" % "test",
-"org.scalatra.sbt" % "scalatra-sbt" % "0.3.0"),
+"org.scalatra.sbt" % "scalatra-sbt" % "0.3.0")
 
 parallelExecution in Test := false
 
