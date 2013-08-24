@@ -10,6 +10,6 @@ import org.scalatra.LifeCycle
  */
 class Scalatra extends LifeCycle {
 	override def init(context: ServletContext) {
-		context.mount(new MainController(new ApplicationConfig), "/*")
+		context.mount(new MainController(ApplicationConfig.instance), "/*")
 	}
 }
