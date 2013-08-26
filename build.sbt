@@ -30,7 +30,8 @@ libraryDependencies ++= Seq(
 "com.ocpsoft" % "ocpsoft-pretty-time" % "1.0.7",
 "org.xmlmatchers" % "xml-matchers" % "0.10" % "test",
 "org.seleniumhq.selenium" % "selenium-java" % "2.24.1" % "test",
-"org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.24.1" % "test")
+"org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.24.1" % "test",
+"org.scalatest" %% "scalatest" % "1.6.1" % "test")
 
 parallelExecution in Test := false
 
