@@ -1,6 +1,6 @@
 name := "craftsmanship_id"
 
-organization := "com.craftedsw.craftsmanship_id"
+organization := "com.craftedsw"
 
 version := "1.0"
 
