@@ -10,5 +10,5 @@ object CraftsmanshipID_Build extends Build
 			.settings( libraryDependencies += specs )
 
 	lazy val PageTest = config("page") extend(Test)
-	lazy val specs =  "org.scalatest" %% "scalatest" % "2.0.M5" % "page"
+	lazy val specs =  "org.scalatest" %% "scalatest" % "1.6.1" % "test"
 }
