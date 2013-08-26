@@ -1,11 +1,5 @@
-libraryDependencies <+= sbtVersion(v => v match {
-  case x if (x.startsWith("0.12")) => "com.github.siasia" %% "xsbt-web-plugin" % "0.12.0-0.2.11.1"
-})
+addSbtPlugin("com.mojolly.scalate" % "xsbt-scalate-generator" % "0.4.2")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.6.0")
+addSbtPlugin("org.scalatra.sbt" % "scalatra-sbt" % "0.3.0")
 
-resolvers += Classpaths.typesafeResolver
-
-resolvers += "scct-github-repository" at "http://mtkopone.github.com/scct/maven-repo"
-
-addSbtPlugin("reaktor" % "sbt-scct" % "0.2-SNAPSHOT")
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.3")

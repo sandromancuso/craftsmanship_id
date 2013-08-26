@@ -1,6 +1,4 @@
 import com.google.inject.{Inject, Guice}
-import java.util.EnumSet
-import javax.servlet.DispatcherType._
 import net.codingwell.scalaguice.InjectorExtensions.ScalaInjector
 import org.craftedsw.craftsmanshipid.configuration.ApplicationConfig
 import ApplicationConfig._
@@ -8,8 +6,7 @@ import org.craftedsw.craftsmanshipid.configuration.guice.{WebModule, Authenticat
 import org.craftedsw.craftsmanshipid.controllers.{MainController, BaseController}
 import org.craftedsw.craftsmanshipid.infrastructure.authorization.filter.AuthorizationFilter
 import org.eclipse.jetty.server.Server
-import org.eclipse.jetty.servlet.{ServletHolder, DefaultServlet, FilterHolder}
-import org.eclipse.jetty.servlets.GzipFilter
+import org.eclipse.jetty.servlet.{ServletHolder, DefaultServlet}
 import org.eclipse.jetty.webapp.WebAppContext
 
 object JettyLauncher extends App {
