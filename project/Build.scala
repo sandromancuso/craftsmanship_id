@@ -1,3 +1,4 @@
+import com.earldouglas.xsbtwebplugin.WebPlugin
 import sbt._
 import Keys._
 import org.scalatra.sbt._
@@ -16,19 +17,28 @@ object CraftsmanshipID_Build extends Build {
 		"craftsmanshipid",
 		file("."),
 		settings = seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*)
-			++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
-			organization := Organization,
-			name := Name,
-			version := Version,
-			scalaVersion := ScalaVersion,
-			resolvers += Classpaths.typesafeReleases,
-			libraryDependencies ++= Seq(
-				"org.scalatra" %% "scalatra" % ScalatraVersion,
-				"org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
-				"org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-				"ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-				"org.eclipse.jetty" % "jetty-webapp" % "8.1.10.v20130312" % "compile;container",
-				"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+			++ Defaults.defaultSettings
+			++ ScalatraPlugin.scalatraWithJRebel
+			++ scalateSettings
+			++ Seq(
+				organization := Organization,
+				name := Name,
+				version := Version,
+				scalaVersion := ScalaVersion,
+				resolvers += Classpaths.typesafeReleases,
+		        unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
+			        Seq( base / "src/web/scala" )
+		        },
+				unmanagedResourceDirectories in Compile <++= baseDirectory { base =>
+			        Seq( base / "src/web/resources" )
+		        },
+				libraryDependencies ++= Seq(
+					"org.scalatra" %% "scalatra" % ScalatraVersion,
+					"org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+					"org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+					"ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+					"org.eclipse.jetty" % "jetty-webapp" % "8.1.10.v20130312" % "compile;container",
+					"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 			),
 			scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
 				Seq(
