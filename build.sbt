@@ -31,6 +31,6 @@ libraryDependencies ++= Seq(
 "org.seleniumhq.selenium" % "selenium-java" % "2.24.1" % "test",
 "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.24.1" % "test")
 
-parallelExecution in Test := false
+parallelExecution in Test := true
 
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
