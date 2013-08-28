@@ -4,7 +4,8 @@
 
 sbt    
 test    
-gen-idea   
+gen-idea
+gen-idea no-sbt-build-module (without the 'no-sbt-build-module', IntelliJ won't run tests. [Conflicting paths](https://github.com/mpeltonen/sbt-idea/issues/200))
 eclipse
 
 
