@@ -8,12 +8,15 @@ import scala.Some
 import org.craftedsw.craftsmanshipid.configuration.ApplicationConfig
 import ApplicationConfig._
 import org.craftedsw.craftsmanshipid.infrastructure.authorization.{NullUserPrincipal, UserPrincipal}
+import org.json4s.{DefaultFormats, Formats}
 
 abstract class BaseController(applicationConfig: ApplicationConfig)
 	extends ScalatraServlet
 	with ScalateSupport
 	with FlashMapSupport
 	with JacksonJsonSupport {
+
+	implicit def jsonFormats: Formats = DefaultFormats
 
 	def noCache(result: String): ActionResult = {
 		Ok(
